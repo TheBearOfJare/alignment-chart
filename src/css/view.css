@@ -1,0 +1,35 @@
+html {
+    background-color: #ffeecd;
+}
+body {
+    margin: 20px;
+}
+.chart {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80vw;
+    height: 80vh; /* Or a fixed height */
+}
+
+.quadrant {
+    box-sizing: border-box; /* To include padding and border in the element's total width and height */
+    width: 50%;
+    height: 50%;
+    border: 1px solid black; /* To see the quadrants */
+}
+
+#q1 {
+    background-color: aquamarine;
+}
+
+#q2 {
+    background-color: darksalmon;
+}
+
+#q3 {
+    background-color: darkkhaki;
+}
+
+#q4 {
+    background-color: cornflowerblue;
+}

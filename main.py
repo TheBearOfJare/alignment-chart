@@ -1,12 +1,15 @@
 import os
+from flask import Flask, render_template
 
-from flask import Flask, send_file
-
-app = Flask(__name__)
+app = Flask(__name__, template_folder='src', static_folder='src')
 
 @app.route("/")
 def index():
-    return send_file('src/index.html')
+    return render_template('index.html')
+
+@app.route("/view")
+def view():
+    return render_template('view.html', q1='Q1', q2='Q2', q3='Q3', q4='Q4')
 
 def main():
     app.run(port=int(os.environ.get('PORT', 80)))
