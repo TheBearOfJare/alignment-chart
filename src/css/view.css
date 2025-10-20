@@ -1,35 +1,60 @@
 html {
     background-color: #ffeecd;
 }
+
 body {
-    margin: 20px;
+    text-align: center;
+    /* margin: 20px; */
+    align-items: center;
 }
 .chart {
     display: flex;
     flex-wrap: wrap;
     width: 80vw;
-    height: 80vh; /* Or a fixed height */
+    justify-self: center;
+    position: relative;
 }
 
 .quadrant {
-    box-sizing: border-box; /* To include padding and border in the element's total width and height */
+    box-sizing: border-box;
     width: 50%;
     height: 50%;
-    border: 1px solid black; /* To see the quadrants */
+    border: 1px solid black;
+}
+
+.quadrant_title {
+    font-size: 20px;
+    padding: 10px;
+    margin: 4%;
 }
 
 #q1 {
-    background-color: aquamarine;
+    background-color: #92d9f7;
+    text-align: right;
 }
 
 #q2 {
-    background-color: darksalmon;
+    background-color: #f8bbb9;
+    text-align: left;
 }
 
 #q3 {
-    background-color: darkkhaki;
+    background-color: #c7e4bc;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    text-align: left;
 }
 
 #q4 {
-    background-color: cornflowerblue;
+    background-color: #f4f5a7;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    text-align: right;
+}
+
+.element {
+    max-width: 40%;
+    position: absolute;
 }

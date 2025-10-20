@@ -6,26 +6,28 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/view.css') }}" />
   </head>
   <body>
+    <h1>{{chartTitle}}</h1>
+    <h2>Made by {{chartSubtitle}}</h2>
     <div class="chart">
         <div id="q2" class="quadrant">
-            <p class="quarter_title">{{q2}}</p>
+            <p class="quadrant_title">{{q2}}</p>
         </div>
         <div id="q1" class="quadrant">
-            <p class="quarter_title">{{q1}}</p>
+            <p class="quadrant_title">{{q1}}</p>
         </div>
         <div id="q3" class="quadrant">
-            <p class="quarter_title">{{q3}}</p>
+            <p class="quadrant_title">{{q3}}</p>
         </div>
         <div id="q4" class="quadrant">
-            <p class="quarter_title">{{q4}}</p>
+            <p class="quadrant_title">{{q4}}</p>
         </div>
+
+        {%for element in elements%}
+          <img class="element" src="{{element.url}}" alt="{{element.title}}" title="{{element.title}}" name="{{element.coords}}">
+        {%endfor%}
     </div>
 
-
-    <div class="item_selector">
-
-    </div>
-
-    <script src="{{ url_for('static', filename='view.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/view.js') }}"></script>
+    
   </body>
 </html>

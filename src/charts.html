@@ -3,17 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Alignment Chart Maker</title>
+    <title>Charts for {{title}}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/make.css') }}" />
   </head>
 
   <body>
-    <h1>Welcome to Alignment Chart Maker</h1>
+    <h1>{{title}}</h1>
 
-    <h2>Every currently available chart:</h2>
+    <h2>User Consensus</h2>
 
-    {% for chart in charts %}
-      <a href="charts{{chart[0]}}">{{chart[1]}}</a><br>
+
+
+    {% for creator in creators %}
+      <a href="view{{chart}}/{{creator}}">According to {{creator}}</a><br>
     {% endfor %}
 
   </body>
