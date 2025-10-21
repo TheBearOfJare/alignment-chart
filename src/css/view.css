@@ -23,9 +23,10 @@ body {
 }
 
 .quadrant_title {
-    font-size: 20px;
+    font-size: 4em;
     padding: 10px;
     margin: 4%;
+    z-index: 2;
 }
 
 #q1 {
@@ -57,4 +58,5 @@ body {
 .element {
     max-width: 40%;
     position: absolute;
+    z-index: 1;
 }

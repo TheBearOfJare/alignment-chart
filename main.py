@@ -32,34 +32,38 @@ def charts(chartTitle):
 
 @app.route("/view<chartTitle>/<creator>")
 def view(chartTitle, creator):
-    print(chartTitle, creator)
+    print("Fetching chart for " + chartTitle + " by " + creator)
     df = pd.read_csv(f'src/alignments/{chartTitle}.csv')
 
     # find the row that matches the creator name
     try:
-        row = df.loc[df['Creator'] == creator]
+        row = list(df.loc[df['Creator'] == creator].iloc[0])
     except Exception as e:
         print(e)
-        return render_template('404.html');
+        return render_template('404.html')
     try:
         with open(f'src/alignments/{chartTitle}.json') as f:
             data = json.load(f)
     except Exception as e:
         print(e)
-        return render_template('404.html');
+        return render_template('404.html')
 
     elements = []
-    titles = df.iloc[0, 1:].to_list()
+    titles = df.columns[1:]
+    # print(titles)
 
-    for i in range(1,len(row)):
-        elements.append({
-            'title': titles[i],
-            'url': data[titles[i]],
-            'coords': row.iloc[i]['Coords']
-        })
+    for i in range(0,len(titles)):
+        if (str(row[i+1]) != "nan"):
+            elements.append({
+                'title': titles[i],
+                'url': data[titles[i]],
+                'coords': row[i+1]
+            })
+        else:
+            break
     
-    print(creator, row)
-    print(elements)
+    # print(row)
+    # print(elements)
     return render_template('view.html', q1=data['q1'], q2=data['q2'], q3=data['q3'], q4=data['q4'], chartTitle=data['chartTitle'], chartSubtitle=creator, elements=elements)
 
 def main():
