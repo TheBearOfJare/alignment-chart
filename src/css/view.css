@@ -23,7 +23,7 @@ body {
 }
 
 .quadrant_title {
-    font-size: 4em;
+    font-size: 4vw;
     padding: 10px;
     margin: 4%;
     z-index: 2;
@@ -53,6 +53,71 @@ body {
     justify-content: flex-end;
     align-items: flex-end;
     text-align: right;
+}
+
+.axis {
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+    /* top: 50%; */
+    /* left: 50%; */
+    box-sizing: border-box;
+    font-size: 3vw;
+}
+
+.connector {
+    align-self: center;
+    min-width: 10%;
+    max-width: 30%;
+    stroke-width: 5%;
+    border: black solid 3%;
+    fill: black;
+    color: black;
+    stroke: black;
+}
+
+.arrow {
+    width: 4vw;
+}
+
+#left_arrow {
+    left: 0;
+    /* top: -1%; */
+    float: left;
+    position: absolute;
+}
+
+#right_arrow {
+    /* top: -1%; */
+    right: 0;
+    float: right;
+    position: absolute;
+}
+
+#xaxis {
+    top: 50%;
+    left: 0;
+}
+
+#yaxis {
+    transform: rotate(90deg);
+    top: 48%;
+    left: 2.5%;
+    /* margin-right: 100px; */
+}
+
+.left {
+    left: 4vw;
+    text-align: left;
+    float: left;
+    position: relative;
+}
+
+.right {
+    right: 4vw;
+    text-align: right;
+    float: right;
+    position: relative;
 }
 
 .element {

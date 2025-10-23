@@ -1,0 +1,136 @@
+html {
+    background-color: #ffeecd;
+}
+
+body {
+    text-align: center;
+    /* margin: 20px; */
+    align-items: center;
+}
+.chart {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80vw;
+    justify-self: center;
+    position: relative;
+}
+
+.quadrant {
+    box-sizing: border-box;
+    width: 50%;
+    height: 50%;
+    border: 1px solid black;
+}
+
+.quadrant_title {
+    font-size: 4vw;
+    padding: 10px;
+    margin: 4%;
+    z-index: 2;
+}
+
+#q1 {
+    background-color: #92d9f7;
+    text-align: right;
+}
+
+#q2 {
+    background-color: #f8bbb9;
+    text-align: left;
+}
+
+#q3 {
+    background-color: #c7e4bc;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    text-align: left;
+}
+
+#q4 {
+    background-color: #f4f5a7;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    text-align: right;
+}
+
+.axis {
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+    /* top: 50%; */
+    /* left: 50%; */
+    box-sizing: border-box;
+    font-size: 3vw;
+}
+
+.connector {
+    align-self: center;
+    min-width: 10%;
+    max-width: 30%;
+    stroke-width: 5%;
+    border: black solid 3%;
+    fill: black;
+    color: black;
+    stroke: black;
+}
+
+.arrow {
+    width: 4vw;
+}
+
+#left_arrow {
+    left: 0;
+    /* top: -1%; */
+    float: left;
+    position: absolute;
+}
+
+#right_arrow {
+    /* top: -1%; */
+    right: 0;
+    float: right;
+    position: absolute;
+}
+
+#xaxis {
+    top: 50%;
+    left: 0;
+}
+
+#yaxis {
+    transform: rotate(90deg);
+    top: 48%;
+    left: 2.5%;
+    /* margin-right: 100px; */
+}
+
+.left {
+    left: 4vw;
+    text-align: left;
+    float: left;
+    position: relative;
+}
+
+.right {
+    right: 4vw;
+    text-align: right;
+    float: right;
+    position: relative;
+}
+
+.element {
+    max-width: 40%;
+    position: absolute;
+    z-index: 1;
+}
+
+.unranked {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80vw;
+    justify-self: center;
+    position: relative;
+    background-color: lightgray;
+}
