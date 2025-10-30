@@ -4,19 +4,63 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Charts for {{title}}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/make.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/view.css') }}" />
   </head>
 
   <body>
     <h1>{{title}}</h1>
 
     <h2>User Consensus</h2>
+    <div class="chart">
+        <div id="q2" class="quadrant">
+            <p class="quadrant_title">{{q2}}</p>
+        </div>
+        <div id="q1" class="quadrant">
+            <p class="quadrant_title">{{q1}}</p>
+        </div>
+        <div id="q3" class="quadrant">
+            <p class="quadrant_title">{{q3}}</p>
+        </div>
+        <div id="q4" class="quadrant">
+            <p class="quadrant_title">{{q4}}</p>
+        </div>
+
+        <div id="xaxis" class="axis">
+          <img class="arrow" id="left_arrow" src="{{ url_for('static', filename='img/start.svg') }}" alt="arrow">
+          <span class="left">{{lowx}}</span>
+          <span class="right">{{highx}}</span>
+          <img class="arrow" id="right_arrow" src="{{ url_for('static', filename='img/end.svg') }}" alt="arrow">
+        </div>
+
+        <div id="yaxis" class="axis">
+          <img class="arrow" id="left_arrow" src="{{ url_for('static', filename='img/start.svg') }}" alt="arrow">
+          <span class="left">{{highy}}</span>
+          <span class="right">{{lowy}}</span>
+          <img class="arrow" id="right_arrow" src="{{ url_for('static', filename='img/end.svg') }}" alt="arrow">
+        </div>
+
+        {%for element in consensus%}
+          <img class="element" src="{{element.url}}" alt="{{element.title}}" title="{{element.title}}" name="{{element.coords}}">
+        {%endfor%}
+    </div>
 
 
-
-    {% for creator in creators %}
-      <a href="view{{chart}}/{{creator}}">According to {{creator}}</a><br>
-    {% endfor %}
+    <table>
+      <tr>
+        <th>Author</th>
+        <th>Take Temperature</th>
+        <th>View Chart</th>
+      </tr>
+      {% for chart in charts %}
+        <tr>
+          <td>{{chart.author}}</td>
+          <td>{{chart.temperature}}
+          <td><a href="view{{chartTitle}}/{{chart.author}}">view</a></td>
+        </tr>
+      {% endfor %}
 
   </body>
+
+  <script src="{{ url_for('static', filename='js/view.js') }}"></script>
+
 </html>

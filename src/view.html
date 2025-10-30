@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/view.css') }}" />
   </head>
   <body>
-    <h1>{{displayTitle}}</h1>
-    <h2>Made by {{chartSubtitle}}</h2>
+    <h1 class="displayTitle" id="displayTitle">{{displayTitle}}</h1>
+    <h2>Made by <span class="author" id="author">{{chartSubtitle}}</span></h2>
     <div class="chart">
         <div id="q2" class="quadrant">
             <p class="quadrant_title">{{q2}}</p>
@@ -25,7 +25,7 @@
         <div id="xaxis" class="axis">
           <img class="arrow" id="left_arrow" src="{{ url_for('static', filename='img/start.svg') }}" alt="arrow">
           <span class="left">{{lowx}}</span>
-          <span class="right">{highx}</span>
+          <span class="right">{{highx}}</span>
           <img class="arrow" id="right_arrow" src="{{ url_for('static', filename='img/end.svg') }}" alt="arrow">
         </div>
 

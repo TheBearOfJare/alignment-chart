@@ -72,13 +72,6 @@ document.addEventListener("DOMContentLoaded", function() {
         if (!isDragging) {
             activeElement = e.target;
             isDragging = true;
-            startX = e.pageX - chartDiv.offsetRight;
-            startY = e.pageY - chartDiv.offsetTop;
-            
-            mouseX = e.clientX - activeElement.getBoundingClientRect().left;
-            mouseY = e.clientY - activeElement.getBoundingClientRect().top;
-            activeElement.style.right = chartDiv.offsetWidth - mouseX + 'px';
-            activeElement.style.top = mouseY + 'px';
         }
         else {
             isDragging = false;
@@ -97,10 +90,38 @@ document.addEventListener("DOMContentLoaded", function() {
         activeElement.style.top = `${y}px`;
     });
 
+
+    // submit all the elements and the author name to go in the database
+    this.getElementById('submit').addEventListener('click', () => {
+        
+        elements = [];
+        for (var i = 0; i < document.querySelectorAll('.element').length; i++) {
+            elements.push(document.querySelectorAll('.element')[i].getAttribute('name'));
+        }
+
+        chartTitle = window.location.pathname.split('/make')[1];
+        // console.log(chartTitle);
+        // post to /make
+        fetch('/make' + chartTitle, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "author": document.getElementById('author').value,
+                "data": elements
+            })
+        }).then(response => {
+            if (response.ok) {
+                window.location.href = '/view' + chartTitle + '/' + document.getElementById('author').value;
+            }
+            
+        })
+            
+    })
+
+
 });
-
-
-
 
 
 function moveToUnranked(element) {
