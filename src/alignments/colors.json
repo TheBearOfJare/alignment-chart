@@ -1,0 +1,22 @@
+{
+    "displayTitle": "Colors",
+    "q1": "Broadly Appealing",
+    "q2": "Situational",
+    "q3": "Situational",
+    "q4": "Eww",
+    "lowx": "I would not paint my car this color",
+    "highx": "I would paint my car this color",
+    "lowy": "I would not wear this color",
+    "highy": "I would wear this color",
+    "Red": "/src/img/colors/red.png",
+    "Blue": "/src/img/colors/blue.png",
+    "Green": "/src/img/colors/green.png",
+    "Yellow": "/src/img/colors/yellow.png",
+    "Orange": "/src/img/colors/orange.png",
+    "Purple": "/src/img/colors/purple.png",
+    "Pink": "/src/img/colors/pink.png",
+    "Brown": "/src/img/colors/brown.png",
+    "Black": "/src/img/colors/black.png",
+    "White": "/src/img/colors/white.png",
+    "Gray": "/src/img/colors/gray.png"
+}

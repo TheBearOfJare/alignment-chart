@@ -33,8 +33,36 @@ window.addEventListener('resize', () => {
     placeElements();
 });
 
+const temperature = document.getElementById('temperature');
+const degrees = parseInt(temperature.innerHTML);
+temperature.style.color = getGradient(degrees);
 
+function getGradient(value) {
+    if (value > 50) {
+        red = 255 * value / 100;
+        green = 255* value/200;
+        blue = 255 * (100 - value) / 200;
+    }
+    else {
+        red = 255* value/200;
+        green = 0;
+        blue = 255 * (100 - value) / 100;
+    }
+    
+    
+    return `rgb(${red}, ${green}, ${blue})`;
+}
 
+flame = document.getElementById('flame');
+if (flame == null) {
+    flame = document.getElementById('tableFlame');
+}
+if (degrees > 50) {
+    flame.style.opacity = degrees / 100;
+}
+else {
+    flame.style.opacity = 0;
+}
 
 function placeElements() {
     const elements = document.querySelectorAll('.element');

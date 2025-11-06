@@ -1,0 +1,13 @@
+{
+    "displayTitle": "Test",
+    "q1": "Good",
+    "q2": "Situational",
+    "q3": "Bad",
+    "q4": "Situational",
+    "lowx": "Worse",
+    "highx": "Better",
+    "lowy": "Worse",
+    "highy": "Better",
+    "Start": "/src/img/start.svg",
+    "End": "/src/img/end.svg"
+}

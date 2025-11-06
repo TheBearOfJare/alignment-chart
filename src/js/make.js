@@ -99,6 +99,8 @@ document.addEventListener("DOMContentLoaded", function() {
             elements.push(document.querySelectorAll('.element')[i].getAttribute('name'));
         }
 
+        console.log(elements.length);
+
         chartTitle = window.location.pathname.split('/make')[1];
         // console.log(chartTitle);
         // post to /make

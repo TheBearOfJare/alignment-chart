@@ -8,6 +8,8 @@
   </head>
 
   <body>
+    <button onclick="window.location.href = '/';" class="homeButton">Go Home</button>
+    <button onclick="window.location.href = '/make{{chartTitle}}';" class="makeButton">Make One</button>
     <h1>{{title}}</h1>
 
     <h2>User Consensus</h2>
@@ -44,6 +46,7 @@
         {%endfor%}
     </div>
 
+    <h2>Aggregate data from</h2>
 
     <table>
       <tr>
@@ -54,7 +57,7 @@
       {% for chart in charts %}
         <tr>
           <td>{{chart.author}}</td>
-          <td>{{chart.temperature}}
+          <td id="temperature">{{chart.temperature}}°<img id="tableFlame" src="{{ url_for('static', filename='img/flameTransparent.gif') }}"></td>
           <td><a href="view{{chartTitle}}/{{chart.author}}">view</a></td>
         </tr>
       {% endfor %}
