@@ -33,9 +33,21 @@ window.addEventListener('resize', () => {
     placeElements();
 });
 
-const temperature = document.getElementById('temperature');
-const degrees = parseInt(temperature.innerHTML);
-temperature.style.color = getGradient(degrees);
+// get all the temperatures
+const temperatures = document.querySelectorAll('#temperature');
+
+for (let i = 0; i < temperatures.length; i++) {
+    degrees = parseInt(temperatures[i].innerHTML);
+    temperatures[i].style.color = getGradient(degrees);
+    flame = temperatures[i].children[0];
+    if (degrees > 50) {
+        flame.style.opacity = degrees / 100;
+    }
+    else {
+        flame.style.opacity = 0;
+    }
+}
+
 
 function getGradient(value) {
     if (value > 50) {
@@ -51,18 +63,9 @@ function getGradient(value) {
     
     
     return `rgb(${red}, ${green}, ${blue})`;
+
 }
 
-flame = document.getElementById('flame');
-if (flame == null) {
-    flame = document.getElementById('tableFlame');
-}
-if (degrees > 50) {
-    flame.style.opacity = degrees / 100;
-}
-else {
-    flame.style.opacity = 0;
-}
 
 function placeElements() {
     const elements = document.querySelectorAll('.element');
