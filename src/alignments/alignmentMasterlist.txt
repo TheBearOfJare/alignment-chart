@@ -1,3 +1,4 @@
 allDisney;All Mainline Disney Movies
 states;Every State by Cuisine and Vibes
+sports;Major Sports by how fun they are to play and watch.
 test;test

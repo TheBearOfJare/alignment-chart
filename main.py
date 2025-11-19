@@ -126,7 +126,7 @@ def make(chartTitle):
         # print(form)
         # print(form.get('author'), form.get('data'))
         # get the form data and put it in the appropriate csv. 
-        # form data is a json object with 1) the author name, 2) a single string of comma seperated values already formatted in the correct order for the csv
+        # form data is a json object with 1) the author name, 2) a set of element names and their coords
 
         # get the dataset and form data. We don't need pandas for this since we're just writing the whole string to line 2 of the file
         
@@ -137,14 +137,20 @@ def make(chartTitle):
         data = form.get('data')
         # sanitize the data
         for index in range(len(data)):
-            data[index] = html.escape(data[index])
+            data[index][1] = html.escape(data[index][1])
 
-        line = author + ",0," + ",".join(data)
+        # make a new line in the csv with our new submitted data
+        db = pd.read_csv(f'src/alignments/{chartTitle}.csv')
+        newline = {}
+        newline["Author"] = author
+        newline["Temperature"] = 0
 
-        print(line)
+        for datum in data:
+            newline[datum[0]] = datum[1]
 
-        with open(f'src/alignments/{chartTitle}.csv', 'a') as f:
-            f.write("\n" + line)
+        # add the series to the db
+        db.loc[len(db)] = newline
+        db.to_csv(f'src/alignments/{chartTitle}.csv', index=False)
 
         print("Done!")
 

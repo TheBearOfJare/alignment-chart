@@ -121,8 +121,9 @@ document.addEventListener("DOMContentLoaded", function() {
     this.getElementById('submit').addEventListener('click', () => {
         
         elements = [];
-        for (var i = 0; i < document.querySelectorAll('.element').length; i++) {
-            elements.push(document.querySelectorAll('.element')[i].getAttribute('name'));
+        htmlElements = document.querySelectorAll('.element');
+        for (var i = 0; i < htmlElements.length; i++) {
+            elements.push([htmlElements[i].getAttribute('title'), htmlElements[i].getAttribute('name')]);
         }
 
         console.log(elements.length);
