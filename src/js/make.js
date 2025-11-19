@@ -50,6 +50,16 @@ var startX, startY, activeElement;
 
 document.addEventListener("DOMContentLoaded", function() {
 
+    if (!window.location.pathname.includes("/make")) {
+        return;
+    }
+
+    const chartTitle = window.location.pathname.split('/make')[1].split('/')[0];
+
+    document.getElementById('displayTitle').addEventListener('click', () => {
+        window.location.href = '/charts' + chartTitle;
+    })
+
     const chartDiv = document.getElementById('chart');
     // const elements = document.querySelectorAll('.element');
 
@@ -59,7 +69,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 isDragging = false;
                 activeElement.name = `${Math.max(0,Math.min(100 - Math.floor(activeElement.style.right.toString().replace('px', '')/chartDiv.offsetWidth*100), 100))};${Math.min(100, Math.max(0, 100 - Math.floor(activeElement.style.top.toString().replace('px', '')/chartDiv.offsetHeight*100)))}`;
                 console.log(activeElement.name);
-                
+                // re enable pointer events
+                activeElement.style.pointerEvents = 'auto';
                 placeElements();
                 return;
             }
@@ -71,6 +82,7 @@ document.addEventListener("DOMContentLoaded", function() {
         
         if (!isDragging) {
             activeElement = e.target;
+            activeElement.style.pointerEvents = 'none';
             isDragging = true;
         }
         else {
@@ -83,12 +95,26 @@ document.addEventListener("DOMContentLoaded", function() {
     chartDiv.addEventListener('mousemove', (e) => {
         if (!isDragging) return;
 
-        const x = e.pageX - chartDiv.offsetLeft + (activeElement.offsetWidth / 2);
-        const y = e.pageY - chartDiv.offsetTop - (activeElement.offsetHeight / 2);
+        const x = e.pageX - chartDiv.offsetLeft;
+        const y = e.pageY - chartDiv.offsetTop;
 
         activeElement.style.right = `${chartDiv.offsetWidth - x}px`;
         activeElement.style.top = `${y}px`;
     });
+
+    this.getElementById('unranked').addEventListener('click', (e) => {
+        if (isDragging) {
+
+            console.log("Moving to unranked");
+            moveToUnranked(activeElement);
+            
+        }
+        else if (e.target.classList.contains('element')) {
+            // move it back to the chart
+            moveToChart(e.target);
+        }
+
+    })
 
 
     // submit all the elements and the author name to go in the database
@@ -101,7 +127,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
         console.log(elements.length);
 
-        chartTitle = window.location.pathname.split('/make')[1];
         // console.log(chartTitle);
         // post to /make
         fetch('/make' + chartTitle, {
@@ -129,10 +154,30 @@ document.addEventListener("DOMContentLoaded", function() {
 function moveToUnranked(element) {
     element.parentNode.removeChild(element);
     document.getElementById('unranked').appendChild(element);
+    element.name = "unranked";
+    element.style.position = 'static';
+    element.style.transform = 'none';
+    element.style.height = "30%";
+
+    // re enable pointer events
+    element.style.pointerEvents = 'auto';
+
+    // reset the active element
+    activeElement = null;
+    isDragging = false;
 }
 
 function moveToChart(element) {
     element.parentNode.removeChild(element);
     document.getElementById('chart').appendChild(element);
+    element.name = "50;50";
+    element.style.position = 'absolute';
+    element.style.transform = 'translate(50%, -50%)';
+
+    // reset the active element
+    activeElement = null;
+    isDragging = false;
+
+    placeElements();
 }
 

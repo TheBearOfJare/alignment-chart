@@ -120,10 +120,18 @@ body {
     position: relative;
 }
 
+.displayTitle:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    font-style: italic;
+}
+
 .element {
     max-width: 40%;
     position: absolute;
     z-index: 1;
+    cursor: pointer;
+    transform: translate(50%, -50%);
 }
 
 .unranked {
@@ -133,4 +141,17 @@ body {
     justify-self: center;
     position: relative;
     background-color: lightgray;
+    height: 20vh;
+}
+
+.unranked h2 {
+    align-self: center;
+    position: absolute;
+    font-size: 4vw;
+    z-index: 1;
+    margin: auto;
+    justify-self: center;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
 }

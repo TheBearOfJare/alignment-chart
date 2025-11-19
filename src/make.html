@@ -6,8 +6,9 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/make.css') }}" />
   </head>
   <body>
-    <h1>{{displayTitle}}</h1>
-    <h2>Made by: </h2><input type="text" name="author" id="author" placeholder="Your Name">
+    <h1 class="displayTitle" id="displayTitle">{{displayTitle}}</h1>
+    <h2>Made by: </h2><input type="text" name="author" id="author" placeholder="Your Name" autofill autocomplete="name">
+    <h3>Click elements to select them, click again to place them where you want them. Hover over them to see their names. Drag any you don't want to rank into the box below.</h3>
     <div class="chart" id="chart">
         <div id="q2" class="quadrant">
             <p class="quadrant_title">{{q2}}</p>
@@ -40,7 +41,7 @@
           <img class="element" src="{{element.url}}" alt="{{element.title}}" title="{{element.title}}" name="50;50">
         {%endfor%}
     </div>
-    <div class="unranked" id="unranked"></div>
+    <div class="unranked" id="unranked"><h2>Unranked</h2></div>
     <button id="submit">Submit</button>
 
   </body>

@@ -1,2 +1,5 @@
 Author,Temperature,Start,End
 test 1,0,100;81,76;80
+test 2,106,30;64,19;77
+test 3,91,67;38,78;28
+Edge Case,100,50;50,unranked

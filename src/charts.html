@@ -10,8 +10,8 @@
   <body>
     <button onclick="window.location.href = '/';" class="homeButton">Go Home</button>
     <button onclick="window.location.href = '/make{{chartTitle}}';" class="makeButton">Make One</button>
-    <h1>{{title}}</h1>
-
+    <h1 class="displayTitle" id="displayTitle" title="Make your own chart for {{title}}">{{title}}</h1>
+    
     <h2>User Consensus</h2>
     <div class="chart">
         <div id="q2" class="quadrant">
@@ -61,9 +61,12 @@
           <td><a href="view{{chartTitle}}/{{chart.author}}">view</a></td>
         </tr>
       {% endfor %}
+    </table>
+    <p>Note, that temperature intentionally does not take relative magnitude into account - users who bias towards ranking things higher or lower than the average but along the same lines are considered to be "the same"</p>
 
   </body>
 
   <script src="{{ url_for('static', filename='js/view.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/make.js') }}"></script>
 
 </html>
